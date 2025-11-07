@@ -16,7 +16,7 @@ block content
           img.ui.avatar.image(src='/user_avatar/'+user.profile.picture)
         else
           img.ui.avatar.image(src=user.gravatar(60))
-      input(readonly, type='text', placeholder='Click to create a post about an event of academic success', style="font-size: 16px; height: 55px;font-weight: bold; color: #333333; background-color: #ffffff; border: 1px solid #dddddd; padding: 12px; width: 100%")
+      input(readonly, type='text', placeholder='Click to create a post about an event of academic success', style="font-size: 17px; height: 55px;font-weight: bold; color: #333333; background-color: #ffffff; border: 1px solid #dddddd; padding: 12px; width: 100%")
     //- Input for creating new post at top of feed
     #secondpost.ui.fluid.left.labeled.right.icon.input
       .ui.label
@@ -24,11 +24,11 @@ block content
           img.ui.avatar.image(src='/user_avatar/'+user.profile.picture)
        else
           img.ui.avatar.image(src=user.gravatar(60))
-      input(readonly, type='text', placeholder='Click to create a post about an event of academic failure', style="font-size: 16px; height: 55px;font-weight: bold; color: #333333; background-color: #ffffff; border: 1px solid #dddddd; padding: 12px; width: 100%")
+      input(readonly, type='text', placeholder='Click to create a post about an event of academic failure', style="font-size: 17px; height: 55px;font-weight: bold; color: #333333; background-color: #ffffff; border: 1px solid #dddddd; padding: 12px; width: 100%")
     //- Input for creating new post at top of feed
     #thirdpost.ui.fluid.left.labeled.right.icon.input
       .ui.label
-      textarea(readonly, placeholder="Once you finish posting, read through all the posts by others and leave a comment on each. \n When you're done with posting and commenting, click your profile icon in the upper right corner to check your notifications and see who has commented on your posts. Read the comments on your posts. \n After that, go ahead and click 'End My Session' " style="font-size: 16px; font-weight: bold; color:#000000; background-color: #ffffff; border: 1px solid #dddddd;height: 140px; padding: 15px;width: 100%; text-align: center; display: flex; align-items: center; justify-content: center;")
+      textarea(readonly, lang="en", placeholder="Once you've finished posting, take some time to explore what others have posted. Feel free to leave comments on their posts.\n\n Notifications about others’ comments on your posts usually appear within a minute or two. Click your profile icon in the upper right corner to view them. \n\nWhen you have finished posting and viewing comments on your posts, click 'End My Session' to log out." style="font-size: 17px; font-weight: bold; color:#000000; background-color: #ffffff; border: 1px solid #dddddd;height: 220px; padding: 15px;width: 100%; text-align: center; display: flex; align-items: center; justify-content: center;")
 
     each val in script
       if val.relativeTime 
@@ -46,8 +46,12 @@ block content
   .ui.tiny.post.modal#newpost-modal
     i.close.icon
     .header.modal-header
-     | Make a post about an event of academic success that you recently experienced.  
-     p Share what happened in as much detail as you can. Describe the event in 8 to 10 sentences.  
+     | Make a post about an event of ACADEMIC SUCCESS that you recently experienced.  
+     p
+     | Share what happened in as much detail as you can. Describe the event in 8 to 10 sentences.
+     p 
+     p
+     | After finishing describing the event, write down a number between 1 (Not at all) and 7 (Extremely) to indicate how good this event made you feel when it happened   
     .scrolling.content
       form#postform.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=_csrf)
@@ -60,8 +64,14 @@ block content
   .ui.tiny.post.modal#secondpost-modal
     i.close.icon
     .header.modal-header
-     | Make a post about an event of academic failure that you recently experienced.  
-     p Share what happened in as much detail as you can. Describe the event in 8 to 10 sentences. 
+     | Make a post about an event of ACADEMIC FAILURE that you recently experienced.  
+     p 
+     | Share what happened in as much detail as you can. Describe the event in 8 to 10 sentences. 
+     p
+     p 
+     | After finishing describing the event, write down a number between 1 (Not at all) and 7 (Extremely) to indicate how bad this event made you feel when it happened. 
+
+
     .scrolling.content
       form#postform2.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')
         input(type='hidden', name='_csrf', value=_csrf)
